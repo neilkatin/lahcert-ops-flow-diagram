@@ -1,0 +1,24 @@
+// ops-flow.template - preplanned
+digraph flow {
+    label="%TITLE%"
+
+    ranksep = 0.2
+    node[width=1.8 height=1.0 fontname="Arial" fillcolor="#ffc0c0" ];
+    edge[ dir=none ]
+
+    Ops [ group=g1 %NODE_OPS% ]
+    Recon [ group=g1 %NODE_RECON% ]
+    Comms [ %NODE_COMMS% ]
+    EOC [ %NODE_EOC% ]
+    Field_1 [ label="Field 1" group=g1 %NODE_FIELD_1% ]
+    Field_2 [ label="Field 2" %NODE_FIELD_2% ]
+    // Field_3 [ label="Field 3" %NODE_FIELD_3% ]
+
+    { rank=same Ops -> EOC [ %EDGE_OPS_EOC% ] }
+    Ops -> Recon [ %EDGE_OPS_RECON% ]
+    Ops -> Comms [ %EDGE_OPS_COMMS% ]
+
+    Recon -> Field_1 [ %EDGE_RECON_FIELD_1% ]
+    Recon -> Field_2 [ %EDGE_RECON_FIELD_2% ]
+    // Recon -> Field_3 [ %EDGE_RECON_FIELD_3% ]
+}
